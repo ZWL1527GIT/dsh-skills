@@ -35,3 +35,9 @@ desktop.ini
 !**/assets/配置文件-模板.ini
 .env
 .env.*
+
+# Windows 保留设备名（MSYS 下会显示为文件）
+CON
+nul
+aux
+prn
