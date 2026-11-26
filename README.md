@@ -7,11 +7,15 @@
 ```
 dsh-skills/
 ├── skills/
-│   └── data-processing-pattern/     # 数据处理模式
+│   ├── data-processing-pattern/     # 数据处理模式
+│   │   ├── SKILL.md                 # 技能主文件（frontmatter + 说明）
+│   │   ├── scripts/                 # 可直接复制到目标项目 工具/ 下的 Python 工具
+│   │   ├── assets/                  # 模板文件（ini / 提示词 / 对话说明）
+│   │   └── references/              # 参考文档（FAQ）
+│   └── java-multi-agent-orchestrator/   # Java 多智能体编排
 │       ├── SKILL.md                 # 技能主文件（frontmatter + 说明）
-│       ├── scripts/                 # 可直接复制到目标项目 工具/ 下的 Python 工具
-│       ├── assets/                  # 模板文件（ini / 提示词 / 对话说明）
-│       └── references/              # 参考文档（FAQ）
+│       ├── agents/                  # 平台适配配置（openai.yaml）
+│       └── references/              # 参考文档（任务分类 / 契约 / 路由 / 恢复 / 规则 / 用例）
 ├── install.py                       # 一键安装脚本
 └── README.md
 ```
@@ -21,6 +25,7 @@ dsh-skills/
 | Skill | 说明 |
 | --- | --- |
 | `data-processing-pattern` | Python 数据处理工作模式：把「配置 / 临时稿 / 对话产物」分开管理。数据库取数、清洗、对比、同步、统计等任务按固定目录结构 + 6 步工作流组织，每次任务自包含、可回溯，写操作有备份可回滚。 |
+| `java-multi-agent-orchestrator` | Java 仓库多智能体编排：根 agent 掌握决策、集成与最终答复，仅在用户明确要求多 agent / 并行分析 / 委派时才拆分任务，普通小改动保持单 agent。含任务分类、任务契约、模型路由、失败恢复、Java 项目规则与评估用例。 |
 
 ## 安装 / 拉取到本机
 
@@ -73,4 +78,5 @@ python install.py        # 覆盖本机旧版本
 
 - 本仓库只放**技能定义**，不放具体业务项目的产物。
 - `data-processing-pattern` 的 `scripts/` 里的 Python 工具是给目标项目复制用的，不是在本仓库里运行。
+- `java-multi-agent-orchestrator` 的 `agents/openai.yaml` 是平台适配配置，不影响 DSH 加载；DSH 只读 `SKILL.md` 与 `references/`。
 - 所有 skill 的 `SKILL.md` 用中文编写，面向中文项目环境。

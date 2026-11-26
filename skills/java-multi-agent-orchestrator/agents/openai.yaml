@@ -1,0 +1,6 @@
+interface:
+  display_name: "Java Multi-Agent Orchestrator"
+  short_description: "Orchestrate safe parallel work for complex Java changes"
+  default_prompt: "Use $java-multi-agent-orchestrator to coordinate this Java task with bounded subagents, clear file ownership, and final review."
+policy:
+  allow_implicit_invocation: true
