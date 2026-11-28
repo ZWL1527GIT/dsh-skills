@@ -53,7 +53,8 @@ description: 一种把「配置、临时稿、对话产物」分开管理的 Pyt
 │
 └── 工具/                     # 公共 Python 工具
     ├── config_loader.py      # 加载 ini 配置、建立 DB 连接
-    └── new_conversation.py   # 一键新建对话目录
+    ├── new_conversation.py   # 一键新建对话目录
+    └── db_backup.py          # 写操作防护：备份 / 回滚 SQL / dry-run
 ```
 
 ### 为什么这样分？
@@ -323,7 +324,8 @@ charset = utf8mb4
 把这个模式搬到一个新项目：
 
 1. 在项目根建 `1配置文件/`、`临时文件/`、`对话文件夹/`、`工具/` 四个目录。
-2. 把 `scripts/config_loader.py` 和 `scripts/new_conversation.py` 复制到 `工具/`。
+2. 把 `scripts/config_loader.py`、`scripts/new_conversation.py`、`scripts/db_backup.py` 三个脚本复制到 `工具/`。
+   （`db_backup.py` 只有做写操作任务时才用到，但建议一开始就复制过去——写操作往往是后来才加上的，等发现缺了再补容易漏。）
 3. 在 `1配置文件/` 下加几个 ini。
 4. 完成 —— 已经可以按上面的「标准工作流程」开干了。
 
